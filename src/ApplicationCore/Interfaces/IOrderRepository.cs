@@ -1,7 +1,7 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Entities.OrderAggregate;
+﻿using Microsoft.ESportShop.ApplicationCore.Entities.OrderAggregate;
 using System.Threading.Tasks;
 
-namespace Microsoft.eShopWeb.ApplicationCore.Interfaces
+namespace Microsoft.ESportShop.ApplicationCore.Interfaces
 {
 
     public interface IOrderRepository : IAsyncRepository<Order>

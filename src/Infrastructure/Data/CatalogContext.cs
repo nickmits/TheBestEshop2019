@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.eShopWeb.ApplicationCore.Entities;
-using Microsoft.eShopWeb.ApplicationCore.Entities.BasketAggregate;
-using Microsoft.eShopWeb.ApplicationCore.Entities.OrderAggregate;
+using Microsoft.ESportShop.ApplicationCore.Entities;
+using Microsoft.ESportShop.ApplicationCore.Entities.BasketAggregate;
+using Microsoft.ESportShop.ApplicationCore.Entities.OrderAggregate;
 
-namespace Microsoft.eShopWeb.Infrastructure.Data
+namespace Microsoft.ESportShop.Infrastructure.Data
 {
 
     public class CatalogContext : DbContext

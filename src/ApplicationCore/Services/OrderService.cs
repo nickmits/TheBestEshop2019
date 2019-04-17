@@ -1,12 +1,13 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Interfaces;
-using Microsoft.eShopWeb.ApplicationCore.Entities.OrderAggregate;
+﻿using Microsoft.ESportShop.ApplicationCore.Interfaces;
+using Microsoft.ESportShop.ApplicationCore.Entities.OrderAggregate;
 using System.Threading.Tasks;
-using Microsoft.eShopWeb.ApplicationCore.Entities;
+using Microsoft.ESportShop.ApplicationCore.Entities;
 using System.Collections.Generic;
-using Ardalis.GuardClauses;
-using Microsoft.eShopWeb.ApplicationCore.Entities.BasketAggregate;
 
-namespace Microsoft.eShopWeb.ApplicationCore.Services
+using Microsoft.ESportShop.ApplicationCore.Entities.BasketAggregate;
+using System;
+
+namespace Microsoft.ESportShop.ApplicationCore.Services
 {
     public class OrderService : IOrderService
     {
@@ -26,7 +27,7 @@ namespace Microsoft.eShopWeb.ApplicationCore.Services
         public async Task CreateOrderAsync(int basketId, Address shippingAddress)
         {
             var basket = await _basketRepository.GetByIdAsync(basketId);
-            Guard.Against.NullBasket(basketId, basket);
+            if (basket == null) throw new ArgumentException("Basket is null");
             var items = new List<OrderItem>();
             foreach (var item in basket.Items)
             {

@@ -1,9 +1,8 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Interfaces;
-using Ardalis.GuardClauses;
+﻿using Microsoft.ESportShop.ApplicationCore.Interfaces;
 using System.Collections.Generic;
 using System;
 
-namespace Microsoft.eShopWeb.ApplicationCore.Entities.BuyerAggregate
+namespace Microsoft.ESportShop.ApplicationCore.Entities.BuyerAggregate
 {
     public class Buyer : BaseEntity
     {

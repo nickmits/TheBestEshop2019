@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Microsoft.eShopWeb.Infrastructure.Identity
+namespace Microsoft.ESportShop.Infrastructure.Identity
 {
-    public class ApplicationUser : IdentityUser
-    {
-    }
+    public class ApplicationUser : IdentityUser { }
 }

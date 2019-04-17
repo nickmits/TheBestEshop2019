@@ -1,9 +1,9 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+﻿using Microsoft.ESportShop.ApplicationCore.Interfaces;
 using System;
 using System.Linq.Expressions;
 using System.Collections.Generic;
 
-namespace Microsoft.eShopWeb.ApplicationCore.Specifications
+namespace Microsoft.ESportShop.ApplicationCore.Specifications
 {
     public abstract class BaseSpecification<T> : ISpecification<T>
     {
@@ -35,6 +35,7 @@ namespace Microsoft.eShopWeb.ApplicationCore.Specifications
             Take = take;
             isPagingEnabled = true;
         }
+  
         protected virtual void ApplyOrderBy(Expression<Func<T, object>> orderByExpression)
         {
             OrderBy = orderByExpression;

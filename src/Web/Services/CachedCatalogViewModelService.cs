@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.eShopWeb.Web.ViewModels;
+using Microsoft.ESportShop.Web.ViewModels;
 using Microsoft.Extensions.Caching.Memory;
 using System;
+using Microsoft.ESportShop.ApplicationCore.Entities;
 
-namespace Microsoft.eShopWeb.Web.Services
+namespace Microsoft.ESportShop.Web.Services
 {
     public class CachedCatalogViewModelService : ICatalogViewModelService
     {
@@ -49,6 +50,41 @@ namespace Microsoft.eShopWeb.Web.Services
                 entry.SlidingExpiration = _defaultCacheDuration;
                 return await _catalogViewModelService.GetTypes();
             });
+        }
+
+        public Task AddCatalogItem()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task DeleteCatalogItem(int Id)
+        {
+           await _catalogViewModelService.DeleteCatalogItem(Id);
+        }
+
+        public async Task UpdateCatalogItemPrice(int Id, decimal Price)
+        {
+            await _catalogViewModelService.UpdateCatalogItemPrice(Id, Price);
+        }
+
+        public Task<CatalogItem> AddCatalogItem(CatalogItem Item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<CatalogType> AddCatalogType(string CatalogType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<CatalogBrand> AddCatalogBrand(string CatalogBrand)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateCatalogItem(CatalogItem ItemToUpdate)
+        {
+            throw new NotImplementedException();
         }
     }
 }

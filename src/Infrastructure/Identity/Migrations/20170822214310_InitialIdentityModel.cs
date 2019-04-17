@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Microsoft.eShopWeb.Infrastructure.Identity.Migrations
+namespace Microsoft.ESportShop.Infrastructure.Identity.Migrations
 {
     public partial class InitialIdentityModel : Migration
     {

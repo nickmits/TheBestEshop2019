@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.eShopWeb.ApplicationCore.Entities;
-using Microsoft.eShopWeb.ApplicationCore.Interfaces;
-using Microsoft.eShopWeb.ApplicationCore.Specifications;
-using Microsoft.eShopWeb.Web.ViewModels;
+using Microsoft.ESportShop.ApplicationCore.Entities;
+using Microsoft.ESportShop.ApplicationCore.Interfaces;
+using Microsoft.ESportShop.ApplicationCore.Specifications;
+using Microsoft.ESportShop.Web.ViewModels;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Microsoft.eShopWeb.Web.Services
+namespace Microsoft.ESportShop.Web.Services
 {
     /// <summary>
     /// This is a UI-specific service so belongs in UI project. It does not contain any business logic and works
@@ -113,6 +113,53 @@ namespace Microsoft.eShopWeb.Web.Services
             }
 
             return items;
+        }
+
+        public async Task<CatalogType> AddCatalogType(string CatalogType)
+        {
+            if (await _typeRepository.AnyAsync(ctype => ctype.Type == CatalogType))
+            {
+                return await _typeRepository.FirstOrDefault(ctype => ctype.Type == CatalogType);
+            }
+            return await _typeRepository.AddAsync(new CatalogType
+            {
+                Type = CatalogType
+            });
+        }
+
+        public async Task<CatalogBrand> AddCatalogBrand(string CatalogBrand)
+        {
+            if (await _brandRepository.AnyAsync(ctype => ctype.Brand == CatalogBrand))
+            {
+                return await _brandRepository.FirstOrDefault(ctype => ctype.Brand == CatalogBrand);
+            }
+            return await _brandRepository.AddAsync(new CatalogBrand
+            {
+                Brand = CatalogBrand
+            });
+        }
+
+        public async Task<CatalogItem> AddCatalogItem(CatalogItem ItemToAdd)
+        {
+            return await _itemRepository.AddAsync(ItemToAdd);
+        }
+
+        public async Task DeleteCatalogItem(int Id)
+        {
+            var ItemToDelete = await _itemRepository.GetByIdAsync(Id);
+            await _itemRepository.DeleteAsync(ItemToDelete);
+        }
+
+        public async Task UpdateCatalogItemPrice(int Id, decimal Price)
+        {
+            var ItemToUpdate = await _itemRepository.GetByIdAsync(Id);
+            ItemToUpdate.Price = Price;
+            await _itemRepository.UpdateAsync(ItemToUpdate);
+        }
+
+        public async Task UpdateCatalogItem(CatalogItem ItemToUpdate)
+        {
+            await _itemRepository.UpdateAsync(ItemToUpdate);
         }
     }
 }

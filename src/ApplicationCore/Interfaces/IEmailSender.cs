@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Microsoft.eShopWeb.ApplicationCore.Interfaces
+namespace Microsoft.ESportShop.ApplicationCore.Interfaces
 {
 
     public interface IEmailSender

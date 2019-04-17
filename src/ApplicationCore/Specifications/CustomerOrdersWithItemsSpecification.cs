@@ -1,6 +1,6 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Entities.OrderAggregate;
+﻿using Microsoft.ESportShop.ApplicationCore.Entities.OrderAggregate;
 
-namespace Microsoft.eShopWeb.ApplicationCore.Specifications
+namespace Microsoft.ESportShop.ApplicationCore.Specifications
 {
     public class CustomerOrdersWithItemsSpecification : BaseSpecification<Order>
     {

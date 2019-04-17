@@ -1,4 +1,4 @@
-﻿namespace Microsoft.eShopWeb.Web.ViewModels
+﻿namespace Microsoft.ESportShop.Web.ViewModels
 {
     public class PaginationInfoViewModel
     {

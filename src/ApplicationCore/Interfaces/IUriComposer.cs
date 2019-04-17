@@ -1,4 +1,4 @@
-﻿namespace Microsoft.eShopWeb.ApplicationCore.Interfaces
+﻿namespace Microsoft.ESportShop.ApplicationCore.Interfaces
 {
     public interface IUriComposer
     {

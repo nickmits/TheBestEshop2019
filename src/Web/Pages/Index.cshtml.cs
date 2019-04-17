@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.eShopWeb.Web.Services;
-using Microsoft.eShopWeb.Web.ViewModels;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.ESportShop.Web.Services;
+using Microsoft.ESportShop.Web.ViewModels;
 using System.Threading.Tasks;
 
-namespace Microsoft.eShopWeb.Web.Pages
+namespace Microsoft.ESportShop.Web.Pages
 {
     public class IndexModel : PageModel
     {
@@ -20,7 +21,5 @@ namespace Microsoft.eShopWeb.Web.Pages
         {
             CatalogModel = await _catalogViewModelService.GetCatalogItems(pageId ?? 0, Constants.ITEMS_PER_PAGE, catalogModel.BrandFilterApplied, catalogModel.TypesFilterApplied);
         }
-
-
     }
 }

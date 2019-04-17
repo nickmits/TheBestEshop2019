@@ -1,7 +1,7 @@
-﻿using Microsoft.eShopWeb.Web.Pages.Basket;
+﻿using Microsoft.ESportShop.Web.Pages.Basket;
 using System.Threading.Tasks;
 
-namespace Microsoft.eShopWeb.Web.Interfaces
+namespace Microsoft.ESportShop.Web.Interfaces
 {
     public interface IBasketViewModelService
     {

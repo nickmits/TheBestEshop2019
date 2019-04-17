@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.eShopWeb.ApplicationCore.Interfaces;
-using Microsoft.eShopWeb.ApplicationCore.Specifications;
-using Microsoft.eShopWeb.Web.ViewModels;
+using Microsoft.ESportShop.ApplicationCore.Interfaces;
+using Microsoft.ESportShop.ApplicationCore.Specifications;
+using Microsoft.ESportShop.Web.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Microsoft.eShopWeb.Web.Controllers
+namespace Microsoft.ESportShop.Web.Controllers
 {
     [ApiExplorerSettings(IgnoreApi = true)]
     [Authorize] // Controllers that mainly require Authorization still use Controller/View; other pages use Pages

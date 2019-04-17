@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Routing;
 using System.Text.RegularExpressions;
 
-namespace Microsoft.eShopWeb.Web
+namespace Microsoft.ESportShop.Web
 {
 
     public class SlugifyParameterTransformer : IOutboundParameterTransformer

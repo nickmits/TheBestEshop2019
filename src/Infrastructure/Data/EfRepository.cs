@@ -1,17 +1,15 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+﻿using Microsoft.ESportShop.ApplicationCore.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.eShopWeb.ApplicationCore.Entities;
+using Microsoft.ESportShop.ApplicationCore.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.eShopWeb.Infrastructure.Data;
+using System;
+using System.Linq.Expressions;
 
-namespace Microsoft.eShopWeb.Infrastructure.Data
+namespace Microsoft.ESportShop.Infrastructure.Data
 {
-    /// <summary>
-    /// "There's some repetition here - couldn't we have some the sync methods call the async?"
-    /// https://blogs.msdn.microsoft.com/pfxteam/2012/04/13/should-i-expose-synchronous-wrappers-for-asynchronous-methods/
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
     public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity
     {
         protected readonly CatalogContext _dbContext;
@@ -60,11 +58,21 @@ namespace Microsoft.eShopWeb.Infrastructure.Data
             _dbContext.Set<T>().Remove(entity);
             await _dbContext.SaveChangesAsync();
         }
-        
+
         private IQueryable<T> ApplySpecification(ISpecification<T> spec)
         {
             return SpecificationEvaluator<T>.GetQuery(_dbContext.Set<T>()
                 .AsQueryable(), spec);
-        }        
+        }
+
+        public async Task<bool> AnyAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _dbContext.Set<T>().AnyAsync(predicate);
+        }
+
+        public async Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate)
+        {
+            return await _dbContext.Set<T>().FirstOrDefaultAsync(predicate);
+        }
     }
 }

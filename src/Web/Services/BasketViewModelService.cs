@@ -1,14 +1,14 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Entities;
-using Microsoft.eShopWeb.ApplicationCore.Entities.BasketAggregate;
-using Microsoft.eShopWeb.ApplicationCore.Interfaces;
-using Microsoft.eShopWeb.ApplicationCore.Specifications;
-using Microsoft.eShopWeb.Web.Interfaces;
-using Microsoft.eShopWeb.Web.Pages.Basket;
+﻿using Microsoft.ESportShop.ApplicationCore.Entities;
+using Microsoft.ESportShop.ApplicationCore.Entities.BasketAggregate;
+using Microsoft.ESportShop.ApplicationCore.Interfaces;
+using Microsoft.ESportShop.ApplicationCore.Specifications;
+using Microsoft.ESportShop.Web.Interfaces;
+using Microsoft.ESportShop.Web.Pages.Basket;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Microsoft.eShopWeb.Web.Services
+namespace Microsoft.ESportShop.Web.Services
 {
     public class BasketViewModelService : IBasketViewModelService
     {

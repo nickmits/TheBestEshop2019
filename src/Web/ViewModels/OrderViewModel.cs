@@ -1,8 +1,8 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Entities.OrderAggregate;
+﻿using Microsoft.ESportShop.ApplicationCore.Entities.OrderAggregate;
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.eShopWeb.Web.ViewModels
+namespace Microsoft.ESportShop.Web.ViewModels
 {
     public class OrderViewModel
     {

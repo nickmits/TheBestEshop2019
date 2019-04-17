@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.eShopWeb.ApplicationCore.Entities;
-using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+using Microsoft.ESportShop.ApplicationCore.Entities;
+using Microsoft.ESportShop.ApplicationCore.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

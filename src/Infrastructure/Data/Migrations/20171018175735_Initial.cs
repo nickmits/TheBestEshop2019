@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace Microsoft.eShopWeb.Infrastructure.Data.Migrations
+namespace Microsoft.ESportShop.Infrastructure.Data.Migrations
 {
     public partial class Initial : Migration
     {

@@ -1,6 +1,6 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Entities;
+﻿using Microsoft.ESportShop.ApplicationCore.Entities;
 
-namespace Microsoft.eShopWeb.ApplicationCore.Specifications
+namespace Microsoft.ESportShop.ApplicationCore.Specifications
 {
     public class CatalogFilterPaginatedSpecification : BaseSpecification<CatalogItem>
     {

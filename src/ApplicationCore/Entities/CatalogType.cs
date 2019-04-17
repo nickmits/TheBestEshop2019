@@ -1,4 +1,4 @@
-﻿namespace Microsoft.eShopWeb.ApplicationCore.Entities
+﻿namespace Microsoft.ESportShop.ApplicationCore.Entities
 {
     public class CatalogType : BaseEntity
     {

@@ -1,14 +1,13 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+﻿using Microsoft.ESportShop.ApplicationCore.Interfaces;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using Microsoft.eShopWeb.ApplicationCore.Specifications;
-using Microsoft.eShopWeb.ApplicationCore.Entities;
+using Microsoft.ESportShop.ApplicationCore.Specifications;
+using Microsoft.ESportShop.ApplicationCore.Entities;
 using System.Linq;
-using Ardalis.GuardClauses;
-using Microsoft.eShopWeb.ApplicationCore.Entities.BasketAggregate;
+using Microsoft.ESportShop.ApplicationCore.Entities.BasketAggregate;
 using System;
 
-namespace Microsoft.eShopWeb.ApplicationCore.Services
+namespace Microsoft.ESportShop.ApplicationCore.Services
 {
     public class BasketService : IBasketService
     {
@@ -51,7 +50,7 @@ namespace Microsoft.eShopWeb.ApplicationCore.Services
 
         public async Task<int> GetBasketItemCountAsync(string userName)
         {
-            Guard.Against.NullOrEmpty(userName, nameof(userName));
+            if (userName == null) throw new ArgumentNullException("this username doesntexist");
             var basketSpec = new BasketWithItemsSpecification(userName);
             var basket = (await _basketRepository.ListAsync(basketSpec)).FirstOrDefault();
             if (basket == null)
@@ -66,23 +65,12 @@ namespace Microsoft.eShopWeb.ApplicationCore.Services
 
         public async Task SetQuantities(int basketId, Dictionary<string, int> quantities)
         {
-            if (quantities == null)
-            {
-                throw new ArgumentNullException();
-            }
+            if (quantities == null)  throw new ArgumentNullException("Quantities are null"); 
 
             var basket = await _basketRepository.GetByIdAsync(basketId);
 
-            if (basket == null)
-            {
-                throw new ArgumentException();
-            }
-
-            if (basket == null)
-            {
-                throw new ArgumentNullException();
-            }
-            //Guard.Against.NullBasket(basketId, basket);
+            if (basket == null) throw new ArgumentException("Basket is null");
+            
             foreach (var item in basket.Items)
             {
                 if (quantities.TryGetValue(item.Id.ToString(), out var quantity))
@@ -96,13 +84,11 @@ namespace Microsoft.eShopWeb.ApplicationCore.Services
 
         public async Task TransferBasketAsync(string anonymousId, string userName)
         {
-            if ()
-            Guard.Against.NullOrEmpty(anonymousId, nameof(anonymousId));
-            Guard.Against.NullOrEmpty(userName, nameof(userName));
+            if (anonymousId == null) throw new ArgumentNullException();
             var basketSpec = new BasketWithItemsSpecification(anonymousId);
             var basket = (await _basketRepository.ListAsync(basketSpec)).FirstOrDefault();
             if (basket == null) return;
-            basket.BuyerId = userName;
+            basket.BuyerId = userName ?? throw new ArgumentNullException();
             await _basketRepository.UpdateAsync(basket);
         }
     }

@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.eShopWeb.Infrastructure.Identity;
-using Microsoft.eShopWeb.Web.Interfaces;
-using Microsoft.eShopWeb.Web.Pages.Basket;
-using Microsoft.eShopWeb.Web.ViewModels;
+using Microsoft.ESportShop.Infrastructure.Identity;
+using Microsoft.ESportShop.Web.Interfaces;
+using Microsoft.ESportShop.Web.Pages.Basket;
+using Microsoft.ESportShop.Web.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Microsoft.eShopWeb.Web.Pages.Shared.Components.BasketComponent
+namespace Microsoft.ESportShop.Web.Pages.Shared.Components.BasketComponent
 {
     public class Basket : ViewComponent
     {

@@ -1,6 +1,6 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+﻿using Microsoft.ESportShop.ApplicationCore.Interfaces;
 
-namespace Microsoft.eShopWeb.ApplicationCore.Services
+namespace Microsoft.ESportShop.ApplicationCore.Services
 {
     public class UriComposer : IUriComposer
     {

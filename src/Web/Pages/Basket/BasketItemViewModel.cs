@@ -1,4 +1,4 @@
-﻿namespace Microsoft.eShopWeb.Web.Pages.Basket
+﻿namespace Microsoft.ESportShop.Web.Pages.Basket
 {
     public class BasketItemViewModel
     {

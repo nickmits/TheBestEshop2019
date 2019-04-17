@@ -1,6 +1,6 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Entities.BasketAggregate;
+﻿using Microsoft.ESportShop.ApplicationCore.Entities.BasketAggregate;
 
-namespace Microsoft.eShopWeb.ApplicationCore.Specifications
+namespace Microsoft.ESportShop.ApplicationCore.Specifications
 {
     public sealed class BasketWithItemsSpecification : BaseSpecification<Basket>
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Microsoft.eShopWeb.Web.ViewModels.Manage
+namespace Microsoft.ESportShop.Web.ViewModels.Manage
 {
     public class IndexViewModel
     {

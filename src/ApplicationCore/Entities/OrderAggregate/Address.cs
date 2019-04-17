@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Microsoft.eShopWeb.ApplicationCore.Entities.OrderAggregate
+namespace Microsoft.ESportShop.ApplicationCore.Entities.OrderAggregate
 {
     public class Address 
     {

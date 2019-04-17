@@ -1,14 +1,13 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Exceptions;
-using Microsoft.eShopWeb.ApplicationCore.Entities.BasketAggregate;
+﻿using Microsoft.ESportShop.ApplicationCore.Exceptions;
+using Microsoft.ESportShop.ApplicationCore.Entities.BasketAggregate;
 
-namespace Ardalis.GuardClauses
+namespace Microsoft.ESportShop.ApplicationCore.Exceptions
 {
     public static class BasketGuards
     {
-        public static void NullBasket(this IGuardClause guardClause, int basketId, Basket basket)
+        public static void NullBasket(int basketId, Basket basket)
         {
-            if (basket == null)
-                throw new BasketNotFoundException(basketId);
+            if (basket == null) throw new BasketNotFoundException(basketId);
         }
     }
 }

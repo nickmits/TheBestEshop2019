@@ -1,9 +1,9 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Entities.OrderAggregate;
-using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+﻿using Microsoft.ESportShop.ApplicationCore.Entities.OrderAggregate;
+using Microsoft.ESportShop.ApplicationCore.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
-namespace Microsoft.eShopWeb.Infrastructure.Data
+namespace Microsoft.ESportShop.Infrastructure.Data
 {
     public class OrderRepository : EfRepository<Order>, IOrderRepository
     {

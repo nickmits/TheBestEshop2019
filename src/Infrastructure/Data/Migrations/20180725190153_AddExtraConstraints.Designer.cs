@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Microsoft.eShopWeb.Infrastructure.Data.Migrations
+namespace Microsoft.ESportShop.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(CatalogContext))]
     [Migration("20180725190153_AddExtraConstraints")]

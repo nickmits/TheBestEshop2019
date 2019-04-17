@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Microsoft.eShopWeb.Web.Pages.Basket
+namespace Microsoft.ESportShop.Web.Pages.Basket
 {
     public class BasketViewModel
     {

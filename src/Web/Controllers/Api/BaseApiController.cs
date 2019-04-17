@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Microsoft.eShopWeb.Web.Controllers.Api
+namespace Microsoft.ESportShop.Web.Controllers.Api
 {
     [Route("api/[controller]/[action]")]
     [ApiController]

@@ -2,15 +2,15 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.eShopWeb.ApplicationCore.Entities.OrderAggregate;
-using Microsoft.eShopWeb.ApplicationCore.Interfaces;
-using Microsoft.eShopWeb.Infrastructure.Identity;
-using Microsoft.eShopWeb.Web.Interfaces;
+using Microsoft.ESportShop.ApplicationCore.Entities.OrderAggregate;
+using Microsoft.ESportShop.ApplicationCore.Interfaces;
+using Microsoft.ESportShop.Infrastructure.Identity;
+using Microsoft.ESportShop.Web.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Microsoft.eShopWeb.Web.Pages.Basket
+namespace Microsoft.ESportShop.Web.Pages.Basket
 {
     public class CheckoutModel : PageModel
     {
@@ -46,7 +46,7 @@ namespace Microsoft.eShopWeb.Web.Pages.Basket
 
             await _basketService.SetQuantities(BasketModel.Id, items);
 
-            await _orderService.CreateOrderAsync(BasketModel.Id, new Address("123 Main St.", "Kent", "OH", "United States", "44240"));
+            await _orderService.CreateOrderAsync(BasketModel.Id, new Address("Pelika & Spartis St.", "Marousi, Athens", "ATT", "Greece", "15122"));
 
             await _basketService.DeleteBasketAsync(BasketModel.Id);
 

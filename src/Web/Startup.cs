@@ -1,6 +1,4 @@
-﻿using Ardalis.ListStartupServices;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -9,14 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.eShopWeb.ApplicationCore.Interfaces;
-using Microsoft.eShopWeb.ApplicationCore.Services;
-using Microsoft.eShopWeb.Infrastructure.Data;
-using Microsoft.eShopWeb.Infrastructure.Identity;
-using Microsoft.eShopWeb.Infrastructure.Logging;
-using Microsoft.eShopWeb.Infrastructure.Services;
-using Microsoft.eShopWeb.Web.Interfaces;
-using Microsoft.eShopWeb.Web.Services;
+using Microsoft.ESportShop.ApplicationCore.Interfaces;
+using Microsoft.ESportShop.ApplicationCore.Services;
+using Microsoft.ESportShop.Infrastructure.Data;
+using Microsoft.ESportShop.Infrastructure.Identity;
+using Microsoft.ESportShop.Infrastructure.Logging;
+using Microsoft.ESportShop.Infrastructure.Services;
+using Microsoft.ESportShop.Web.Interfaces;
+using Microsoft.ESportShop.Web.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -28,7 +26,7 @@ using System.Linq;
 using System.Net.Mime;
 using System.Threading.Tasks;
 
-namespace Microsoft.eShopWeb.Web
+namespace Microsoft.ESportShop.Web
 {
     public class Startup
     {
@@ -43,10 +41,10 @@ namespace Microsoft.eShopWeb.Web
         public void ConfigureDevelopmentServices(IServiceCollection services)
         {
             // use in-memory database
-            ConfigureInMemoryDatabases(services);
+            // ConfigureInMemoryDatabases(services);
 
             // use real database
-            // ConfigureProductionServices(services);
+            ConfigureProductionServices(services);
         }
 
         private void ConfigureInMemoryDatabases(IServiceCollection services)
@@ -64,9 +62,6 @@ namespace Microsoft.eShopWeb.Web
 
         public void ConfigureProductionServices(IServiceCollection services)
         {
-            // use real database
-            // Requires LocalDB which can be installed with SQL Server Express 2016
-            // https://www.microsoft.com/en-us/download/details.aspx?id=54284
             services.AddDbContext<CatalogContext>(c =>
                 c.UseSqlServer(Configuration.GetConnectionString("CatalogConnection")));
 
@@ -77,8 +72,6 @@ namespace Microsoft.eShopWeb.Web
             ConfigureServices(services);
         }
 
-
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -88,7 +81,7 @@ namespace Microsoft.eShopWeb.Web
 
             services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
 
-            services.AddScoped<ICatalogViewModelService, CachedCatalogViewModelService>();
+            services.AddScoped<ICatalogViewModelService, CatalogViewModelService>();
             services.AddScoped<IBasketService, BasketService>();
             services.AddScoped<IBasketViewModelService, BasketViewModelService>();
             services.AddScoped<IOrderService, OrderService>();
@@ -105,8 +98,6 @@ namespace Microsoft.eShopWeb.Web
 
             services.AddRouting(options =>
             {
-                // Replace the type and the name used to refer to it with your own
-                // IOutboundParameterTransformer implementation
                 options.ConstraintMap["slugify"] = typeof(SlugifyParameterTransformer);
             });
 
@@ -130,15 +121,7 @@ namespace Microsoft.eShopWeb.Web
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
 
-            
-            services.Configure<ServiceConfig>(config =>
-            {
-                config.Services = new List<ServiceDescriptor>(services);
-
-                config.Path = "/allservices";
-            });
-
-            _services = services; // used to debug registered services
+            _services = services;
         }
 
         private static void CreateIdentityIfNotCreated(IServiceCollection services)
@@ -194,15 +177,15 @@ namespace Microsoft.eShopWeb.Web
             }
             //Assign Admin role to the main User here we have given our newly registered 
             //login id for Admin management
-            ApplicationUser user = await UserManager.FindByEmailAsync("nkaramousadakis@outlook.com");
+            ApplicationUser user = await UserManager.FindByEmailAsync("nick.mitselos@gmail.com");
             if (user is null)
             {
                 user = new ApplicationUser
                 {
-                    UserName = "nickmits",
+                    UserName = "nick.mitselos@gmail.com",
                     Email = "nick.mitselos@gmail.com"
                 };
-                var result = await UserManager.CreateAsync(user, "asdQWE123!@#");
+                var result = await UserManager.CreateAsync(user, "12345");
             }
             await UserManager.AddToRoleAsync(user, "Admin");
         }
@@ -210,17 +193,15 @@ namespace Microsoft.eShopWeb.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider services)
         {
- 
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseShowAllServicesMiddleware();
                 app.UseDatabaseErrorPage();
             }
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -230,11 +211,9 @@ namespace Microsoft.eShopWeb.Web
 
             app.UseAuthentication();
 
-            // Enable middleware to serve generated Swagger as a JSON endpoint.
+
             app.UseSwagger();
 
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
-            // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");

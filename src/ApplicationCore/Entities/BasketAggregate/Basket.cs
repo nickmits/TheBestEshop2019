@@ -1,8 +1,8 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+﻿using Microsoft.ESportShop.ApplicationCore.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Microsoft.eShopWeb.ApplicationCore.Entities.BasketAggregate
+namespace Microsoft.ESportShop.ApplicationCore.Entities.BasketAggregate
 {
     public class Basket : BaseEntity
     {

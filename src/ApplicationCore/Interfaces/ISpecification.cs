@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Microsoft.eShopWeb.ApplicationCore.Interfaces
+namespace Microsoft.ESportShop.ApplicationCore.Interfaces
 {
     public interface ISpecification<T>
     {

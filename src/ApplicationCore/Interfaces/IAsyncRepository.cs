@@ -1,8 +1,10 @@
-﻿using Microsoft.eShopWeb.ApplicationCore.Entities;
+﻿using Microsoft.ESportShop.ApplicationCore.Entities;
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Microsoft.eShopWeb.ApplicationCore.Interfaces
+namespace Microsoft.ESportShop.ApplicationCore.Interfaces
 {
     public interface IAsyncRepository<T> where T : BaseEntity
     {
@@ -13,5 +15,7 @@ namespace Microsoft.eShopWeb.ApplicationCore.Interfaces
         Task UpdateAsync(T entity);
         Task DeleteAsync(T entity);
         Task<int> CountAsync(ISpecification<T> spec);
+        Task<T> FirstOrDefault(Expression<Func<T, bool>> predicate);
+        Task<bool> AnyAsync(Expression<Func<T, bool>> predicate);
     }
 }

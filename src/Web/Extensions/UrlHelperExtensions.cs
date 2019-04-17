@@ -1,4 +1,4 @@
-﻿using Microsoft.eShopWeb.Web.Controllers;
+﻿using Microsoft.ESportShop.Web.Controllers;
 
 namespace Microsoft.AspNetCore.Mvc
 {
