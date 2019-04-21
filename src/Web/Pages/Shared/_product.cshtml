@@ -3,6 +3,7 @@
 <form asp-page="/Basket/Index" method="post">
     <img class="esh-catalog-thumbnail" src="@Model.PictureUri" />
     <input class="esh-catalog-button" type="submit" value="ADD TO BASKET" />
+
     @if (User.Identity.IsAuthenticated)
     {
         @if (User.IsInRole("Admin"))
@@ -17,6 +18,7 @@
             </button>
         }
     }
+
     <div class="esh-catalog-name">
         <span>@Model.Name</span>
     </div>

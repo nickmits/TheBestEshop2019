@@ -11,10 +11,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.ESportShop.Web.Services
 {
-    /// <summary>
-    /// This is a UI-specific service so belongs in UI project. It does not contain any business logic and works
-    /// with UI-specific types (view models and SelectListItem types).
-    /// </summary>
+
     public class CatalogViewModelService : ICatalogViewModelService
     {
         private readonly ILogger<CatalogViewModelService> _logger;

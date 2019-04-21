@@ -22,31 +22,37 @@
     </div>
 </section>
 <div class="container">
-    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#createPopup">
-        CREATE NEW
-    </button>
 
-    @if (Model.CatalogModel.CatalogItems.Any())
+    @if (User.Identity.IsAuthenticated)
     {
-        <partial name="_pagination" for="CatalogModel.PaginationInfo" />
-
-        <div class="esh-catalog-items row">
-            @foreach (var catalogItem in Model.CatalogModel.CatalogItems)
+        @if (User.IsInRole("Admin"))
+        {
+            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#createPopup">
+                CREATE NEW
+            </button>
+        }
+    }
+            @if (Model.CatalogModel.CatalogItems.Any())
             {
-                <div class="esh-catalog-item col-md-4">
-                    <partial name="_product" for="@catalogItem" />
+                <partial name="_pagination" for="CatalogModel.PaginationInfo" />
+
+                <div class="esh-catalog-items row">
+                    @foreach (var catalogItem in Model.CatalogModel.CatalogItems)
+                    {
+                        <div class="esh-catalog-item col-md-4">
+                            <partial name="_product" for="@catalogItem" />
+                        </div>
+                    }
+                </div>
+                <partial name="_pagination" for="CatalogModel.PaginationInfo" />
+            }
+            else
+            {
+                <div class="esh-catalog-items row">
+                    THERE ARE NO RESULTS THAT MATCH YOUR SEARCH
                 </div>
             }
         </div>
-        <partial name="_pagination" for="CatalogModel.PaginationInfo" />
-    }
-    else
-    {
-        <div class="esh-catalog-items row">
-            THERE ARE NO RESULTS THAT MATCH YOUR SEARCH
-        </div>
-    }
-</div>
 
 <div class="modal fade" id="createPopup" tabindex="-1" role="dialog" aria-labelledby="createPopupLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
